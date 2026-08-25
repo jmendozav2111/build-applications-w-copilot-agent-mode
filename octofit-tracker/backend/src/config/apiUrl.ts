@@ -1,8 +1,8 @@
-const port = Number(process.env.PORT) || 8000;
+export const backendPort = 8000;
 const codespaceName = process.env.CODESPACE_NAME;
 
 export const apiBaseUrl = codespaceName
-  ? `https://${codespaceName}-${port}.app.github.dev`
-  : `http://localhost:${port}`;
+  ? `https://${codespaceName}-${backendPort}.app.github.dev`
+  : `http://localhost:${backendPort}`;
 
 export default apiBaseUrl;
