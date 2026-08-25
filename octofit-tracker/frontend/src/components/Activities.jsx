@@ -5,11 +5,12 @@ function Activities({ apiBaseUrl }) {
   const [activities, setActivities] = useState([])
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(true)
+  const apiEndpoint = `${apiBaseUrl}/api/activities/`
 
   useEffect(() => {
     let isMounted = true
 
-    fetchCollection(apiBaseUrl, 'activities')
+    fetchCollection(apiEndpoint, 'activities')
       .then((items) => {
         if (isMounted) {
           setActivities(items)
@@ -30,7 +31,7 @@ function Activities({ apiBaseUrl }) {
     return () => {
       isMounted = false
     }
-  }, [apiBaseUrl])
+  }, [apiEndpoint])
 
   if (isLoading) {
     return <p className="text-secondary">Loading activities...</p>

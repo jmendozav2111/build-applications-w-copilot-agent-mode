@@ -5,11 +5,12 @@ function Workouts({ apiBaseUrl }) {
   const [workouts, setWorkouts] = useState([])
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(true)
+  const apiEndpoint = `${apiBaseUrl}/api/workouts/`
 
   useEffect(() => {
     let isMounted = true
 
-    fetchCollection(apiBaseUrl, 'workouts')
+    fetchCollection(apiEndpoint, 'workouts')
       .then((items) => {
         if (isMounted) {
           setWorkouts(items)
@@ -30,7 +31,7 @@ function Workouts({ apiBaseUrl }) {
     return () => {
       isMounted = false
     }
-  }, [apiBaseUrl])
+  }, [apiEndpoint])
 
   if (isLoading) {
     return <p className="text-secondary">Loading workouts...</p>

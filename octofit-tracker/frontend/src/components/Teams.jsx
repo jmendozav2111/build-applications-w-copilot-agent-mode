@@ -5,11 +5,12 @@ function Teams({ apiBaseUrl }) {
   const [teams, setTeams] = useState([])
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(true)
+  const apiEndpoint = `${apiBaseUrl}/api/teams/`
 
   useEffect(() => {
     let isMounted = true
 
-    fetchCollection(apiBaseUrl, 'teams')
+    fetchCollection(apiEndpoint, 'teams')
       .then((items) => {
         if (isMounted) {
           setTeams(items)
@@ -30,7 +31,7 @@ function Teams({ apiBaseUrl }) {
     return () => {
       isMounted = false
     }
-  }, [apiBaseUrl])
+  }, [apiEndpoint])
 
   if (isLoading) {
     return <p className="text-secondary">Loading teams...</p>

@@ -5,11 +5,12 @@ function Users({ apiBaseUrl }) {
   const [users, setUsers] = useState([])
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(true)
+  const apiEndpoint = `${apiBaseUrl}/api/users/`
 
   useEffect(() => {
     let isMounted = true
 
-    fetchCollection(apiBaseUrl, 'users')
+    fetchCollection(apiEndpoint, 'users')
       .then((items) => {
         if (isMounted) {
           setUsers(items)
@@ -30,7 +31,7 @@ function Users({ apiBaseUrl }) {
     return () => {
       isMounted = false
     }
-  }, [apiBaseUrl])
+  }, [apiEndpoint])
 
   if (isLoading) {
     return <p className="text-secondary">Loading users...</p>

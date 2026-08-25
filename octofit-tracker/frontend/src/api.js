@@ -35,8 +35,8 @@ export function normalizeCollection(payload, collectionKey) {
   return [];
 }
 
-export async function fetchCollection(apiBaseUrl, collectionKey) {
-  const response = await fetch(`${apiBaseUrl}/api/${collectionKey}/`);
+export async function fetchCollection(apiEndpoint, collectionKey) {
+  const response = await fetch(apiEndpoint);
 
   if (!response.ok) {
     throw new Error(`Request failed with status ${response.status}`);

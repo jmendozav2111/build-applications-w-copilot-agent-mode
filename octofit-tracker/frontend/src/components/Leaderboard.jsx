@@ -5,11 +5,12 @@ function Leaderboard({ apiBaseUrl }) {
   const [leaderboard, setLeaderboard] = useState([])
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(true)
+  const apiEndpoint = `${apiBaseUrl}/api/leaderboard/`
 
   useEffect(() => {
     let isMounted = true
 
-    fetchCollection(apiBaseUrl, 'leaderboard')
+    fetchCollection(apiEndpoint, 'leaderboard')
       .then((items) => {
         if (isMounted) {
           setLeaderboard(items)
@@ -30,7 +31,7 @@ function Leaderboard({ apiBaseUrl }) {
     return () => {
       isMounted = false
     }
-  }, [apiBaseUrl])
+  }, [apiEndpoint])
 
   if (isLoading) {
     return <p className="text-secondary">Loading leaderboard...</p>
