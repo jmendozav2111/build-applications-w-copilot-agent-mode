@@ -7,7 +7,7 @@ router.get('/', async (_req, res) => {
   try {
     const users = await User.find().sort({ username: 1 });
 
-    res.json({ users });
+    res.json(users);
   } catch (error) {
     res.status(500).json({ error: 'Failed to load users' });
   }
