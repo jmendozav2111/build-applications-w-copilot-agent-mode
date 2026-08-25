@@ -5,7 +5,9 @@ function Leaderboard({ apiBaseUrl }) {
   const [leaderboard, setLeaderboard] = useState([])
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(true)
-  const apiEndpoint = `${apiBaseUrl}/api/leaderboard/`
+  const apiEndpoint = import.meta.env.VITE_CODESPACE_NAME
+    ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard/`
+    : `${apiBaseUrl}/api/leaderboard/`
 
   useEffect(() => {
     let isMounted = true

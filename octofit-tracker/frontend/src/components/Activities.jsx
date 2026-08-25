@@ -5,7 +5,9 @@ function Activities({ apiBaseUrl }) {
   const [activities, setActivities] = useState([])
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(true)
-  const apiEndpoint = `${apiBaseUrl}/api/activities/`
+  const apiEndpoint = import.meta.env.VITE_CODESPACE_NAME
+    ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/activities/`
+    : `${apiBaseUrl}/api/activities/`
 
   useEffect(() => {
     let isMounted = true

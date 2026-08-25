@@ -5,7 +5,9 @@ function Teams({ apiBaseUrl }) {
   const [teams, setTeams] = useState([])
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(true)
-  const apiEndpoint = `${apiBaseUrl}/api/teams/`
+  const apiEndpoint = import.meta.env.VITE_CODESPACE_NAME
+    ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/teams/`
+    : `${apiBaseUrl}/api/teams/`
 
   useEffect(() => {
     let isMounted = true

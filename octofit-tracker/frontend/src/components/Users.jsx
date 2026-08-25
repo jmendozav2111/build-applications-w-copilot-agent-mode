@@ -5,7 +5,9 @@ function Users({ apiBaseUrl }) {
   const [users, setUsers] = useState([])
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(true)
-  const apiEndpoint = `${apiBaseUrl}/api/users/`
+  const apiEndpoint = import.meta.env.VITE_CODESPACE_NAME
+    ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/users/`
+    : `${apiBaseUrl}/api/users/`
 
   useEffect(() => {
     let isMounted = true
